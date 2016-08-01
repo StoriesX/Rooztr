@@ -35,7 +35,7 @@ public class Testing {
     //String xmlAnswer = target.path("v1").path("register").request().accept(MediaType.TEXT_XML).get(String.class);
     //String htmlAnswer= target.path("v1").path("register").request().accept(MediaType.TEXT_HTML).get(String.class);
     
-    int status = 5;
+    int status = 4;
     if(status == 1){
     	Form form = new Form();
     	form.param("phone", "1234567893");
@@ -44,38 +44,38 @@ public class Testing {
     }else if(status == 2){
     	Form form = new Form();
     	form.param("phone", "1234567893");
-    	form.param("code", "0xxhbf");
+    	form.param("code", "dpy8sy");
     	Response response = target.path("rest").path("login").request().post(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED), Response.class);
     	System.out.println(response.toString());
     }else if(status == 3){
     	Form form = new Form();
-    	form.param("toPhone", "1234567891");
+    	form.param("toPhone", "1234567893");
     	form.param("start", "1469574942000");
     	form.param("end", "1469594942000");
-    	form.param("message", "hello 93 to 91");
+    	form.param("message", "hello 90 to 93");
     	Response response = target.path("rest").path("request").request()
-    			.header("phone", "1234567893").header("token", "77i1561f3ifa1dijf0v6apr1i2").post(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED), Response.class);
+    			.header("phone", "1234567892").header("token", "45tj7i57lbfk99tm9vr19nf4c5").post(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED), Response.class);
     	System.out.println(response.toString());
     	System.out.println(response.getHeaderString("error").toString());
     }else if(status == 4){
-    	Response response = target.path("rest").path("allrequestlist").request()
-    			.header("phone", "1234567890").header("token", "nmhu3asprdasch7k02vnjfk63i").get();
+    	Response response = target.path("rest").path("waitlist").queryParam("from", "").queryParam("to", "").request()
+    			.header("phone", "1234567893").header("token", "i6dbcp92a9o9mcv8oj65mp9e8g").get();
     	System.out.println(response.readEntity(String.class));
     }else if(status == 5){
     	Form form = new Form();
-    	form.param("id", "579a61b8652b2c20bcd8d08b");
-    	Response response = target.path("rest").path("withdraw").request().header("phone", "1234567890").header("token", "nmhu3asprdasch7k02vnjfk63i")
+    	form.param("id", "579fa59789e20c14b46949b8");
+    	Response response = target.path("rest").path("requesteedelete").request().header("phone", "1234567893").header("token", "i6dbcp92a9o9mcv8oj65mp9e8g")
     			.put(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED), Response.class);
-    	System.out.println(response.readEntity(String.class));
+    	System.out.println(response.toString());
     }else{
     	System.out.println(new Date(-1L));
     }
     
     /*
-    	90: "nmhu3asprdasch7k02vnjfk63i"
-    	91: "cd518thfja5470o6e93o3rpnhh"
-    	92: "92mkg8o3socv1jikuha0fjl1d8"
-    	93: "77i1561f3ifa1dijf0v6apr1i2"
+    	90: "il9bjda9rimkr260apmlvtavip"
+    	91: "f0hostv76kujih6vkdvl3kdl1s"
+    	92: "45tj7i57lbfk99tm9vr19nf4c5"
+    	93: "i6dbcp92a9o9mcv8oj65mp9e8g"
     */
   }
 

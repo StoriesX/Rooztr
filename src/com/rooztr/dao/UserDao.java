@@ -174,7 +174,7 @@ public class UserDao {
 	}
 
 	public void requesterDelete(String phone, String id) throws Exception{
-		Document doc = requests.find(new Document("_id", new ObjectId(id)).append("requestee", phone)).first();
+		Document doc = requests.find(new Document("_id", new ObjectId(id)).append("requester", phone)).first();
 		int stats = doc.getInteger("status").intValue(); //throw NullPointerException if doc is null
 		if(stats >= CallRequest.REQUESTEE_DELETED){
 			requests.findOneAndDelete(doc);
@@ -190,7 +190,7 @@ public class UserDao {
 	}
 
 	public void requesteeDelete(String phone, String id) throws Exception{
-		Document doc = requests.find(new Document("_id", new ObjectId(id)).append("requester", phone)).first();
+		Document doc = requests.find(new Document("_id", new ObjectId(id)).append("requestee", phone)).first();
 		int stats = doc.getInteger("status").intValue(); //throw NullPointerException if doc is null
 		if(stats <= CallRequest.REQUESTER_DELETED){
 			requests.findOneAndDelete(doc);

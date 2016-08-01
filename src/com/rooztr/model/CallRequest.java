@@ -8,8 +8,8 @@ import org.bson.Document;
 
 @XmlRootElement
 public class CallRequest {
-	public final static int DONE_REQUESTER_DELETED = -3; //done by requestee and deleted by requester
-	public final static int REFUSED_REQUESTER_DELETED = -2; //refused by requestee and deleted by requester
+	public final static int DONE_REQUESTER_DELETED = -2; //done by requestee and deleted by requester
+	public final static int REFUSED_REQUESTER_DELETED = -3; //refused by requestee and deleted by requester
 	public final static int REQUESTER_DELETED = -1; //requestee will see this as requester withdrew the request
 	public final static int WAITING = 0;
 	public final static int WITHDRAWL = 1;
