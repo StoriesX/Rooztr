@@ -80,7 +80,7 @@ public class UserDao {
 		System.out.println("Send Text Message to Phone "+phone+" : "+code);
 	}
 
-	public String sendRequest(String fromPhone, String toPhone, String start, String end, String message) throws Exception{
+	public CallRequest sendRequest(String fromPhone, String toPhone, String start, String end, String message) throws Exception{
 		//nullCheck(fromPhone, start, end, toPhone);
 		Document user = users.find(new Document("_id", toPhone)).first();
 		if(user == null){
@@ -94,7 +94,7 @@ public class UserDao {
 			Document req = new Document("requester", fromPhone).append("requestee", toPhone).append("sentAt", new Date()).append("start", s).append("end", e).append("status", CallRequest.WAITING).append("message", message);
 			requests.insertOne(req);
 			System.out.println("request with ID was created: "+req.get("_id").toString());
-			return req.get("_id").toString();
+			return CallRequest.parseCallRequest(req);
 		}
 	}
 	

@@ -69,8 +69,8 @@ public class Rest {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response request(@FormParam("toPhone") String toPhone, @FormParam("start") String start, @FormParam("end") String end, @FormParam("message") String message, @HeaderParam("phone") String fromPhone){
 		try{
-			String requestID = UserDao.getInstance().sendRequest(fromPhone, toPhone, start, end, message);
-			return Response.ok().header("requestID", requestID).build();
+			CallRequest request = UserDao.getInstance().sendRequest(fromPhone, toPhone, start, end, message);
+			return Response.ok().entity(request).build();
 		}catch(UserNotExistException e){
 			System.out.println(e.getMessage());
 			return Response.ok().header("error", 1).build();
