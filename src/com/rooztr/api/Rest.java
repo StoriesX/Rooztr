@@ -36,7 +36,7 @@ public class Rest {
 	public Response register(@FormParam("phone") String phone){
 		try{
 			UserDao.getInstance().sendTextMessage(phone);
-			return Response.ok().build();
+			return Response.status(Response.Status.CREATED).build();
 		}catch(NullPointerException e){
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}catch(Exception e){
@@ -117,11 +117,10 @@ public class Rest {
 	@Secured
 	@Path("/withdraw")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response withdraw(@HeaderParam("phone") String phone, @FormParam("id") String id){
 		try{
 			UserDao.getInstance().withdraw(phone, id);
-			return Response.ok().build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 		}catch(NullPointerException e){
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}catch(Exception e){
@@ -134,11 +133,10 @@ public class Rest {
 	@Secured
 	@Path("/finish")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response finish(@HeaderParam("phone") String phone, @FormParam("id") String id){
 		try{
 			UserDao.getInstance().finish(phone, id);
-			return Response.ok().build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 		}catch(NullPointerException e){
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}catch(Exception e){
@@ -151,11 +149,10 @@ public class Rest {
 	@Secured
 	@Path("/refuse")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response refuse(@HeaderParam("phone") String phone, @FormParam("id") String id){
 		try{
 			UserDao.getInstance().refuse(phone, id);
-			return Response.ok().build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 		}catch(NullPointerException e){
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}catch(Exception e){
@@ -171,7 +168,7 @@ public class Rest {
 	public Response requesterDelete(@HeaderParam("phone") String phone, @FormParam("id") String id){
 		try{
 			UserDao.getInstance().requesterDelete(phone, id);
-			return Response.ok().build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 		}catch(NullPointerException e){
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}catch(Exception e){
@@ -187,7 +184,7 @@ public class Rest {
 	public Response requesteeDelete(@HeaderParam("phone") String phone, @FormParam("id") String id){
 		try{
 			UserDao.getInstance().requesteeDelete(phone, id);
-			return Response.ok().build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 		}catch(NullPointerException e){
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}catch(Exception e){
