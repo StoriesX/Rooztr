@@ -67,6 +67,7 @@ public class UserDao {
 		//nullCheck(phone, token);
 		Document user = users.find(new Document("_id", phone).append("token", token)).first();
 		if(user == null){
+			System.out.println(phone+" is not validated");
 			throw new UserNotExistException(phone);
 		}
 		System.out.println(phone+" is validated");

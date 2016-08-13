@@ -65,7 +65,6 @@ public class Rest {
 	@POST
 	@Secured
 	@Path("/validate")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response validate(){
 		return Response.ok().build();
 	}
