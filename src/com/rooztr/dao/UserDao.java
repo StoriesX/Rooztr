@@ -82,6 +82,7 @@ public class UserDao {
 
 	public CallRequest sendRequest(String fromPhone, String toPhone, String start, String end, String message) throws Exception{
 		//nullCheck(fromPhone, start, end, toPhone);
+		if(fromPhone.equals(toPhone)) throw new NullPointerException();
 		Document user = users.find(new Document("_id", toPhone)).first();
 		if(user == null){
 			throw new UserNotExistException(toPhone);
