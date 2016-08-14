@@ -93,6 +93,7 @@ public class UserDao {
 			if(s.after(e)){
 				throw new NullPointerException(); //should create a new exception, but NullPointerException will just work
 			}
+			if(message == null) message = "";
 			Document req = new Document("requester", fromPhone).append("requestee", toPhone).append("sentAt", new Date()).append("start", s).append("end", e).append("status", CallRequest.WAITING).append("message", message);
 			requests.insertOne(req);
 			System.out.println("request with ID was created: "+req.get("_id").toString());
