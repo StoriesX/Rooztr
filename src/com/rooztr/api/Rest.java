@@ -80,7 +80,7 @@ public class Rest {
 			return Response.ok().entity(request).build();
 		}catch(UserNotExistException e){
 			System.out.println(e.getMessage());
-			return Response.ok().header("error", 1).build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 		}catch(NumberFormatException e){
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}catch(NullPointerException e){
